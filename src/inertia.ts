@@ -125,10 +125,10 @@ export function inertiaMiddleware(req: Request, res: Response, next: NextFunctio
           const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'))
           const entry = manifest['inertia/app/app.tsx']
           if (entry) {
-            jsTag = `<script type="module" src="/assets/${entry.file}"></script>`
+            jsTag = `<script type="module" src="/${entry.file}"></script>`
             if (entry.css) {
               cssTag = entry.css
-                .map((cssFile: string) => `<link rel="stylesheet" href="/assets/${cssFile}" />`)
+                .map((cssFile: string) => `<link rel="stylesheet" href="/${cssFile}" />`)
                 .join('\n  ')
             }
           }
