@@ -114,9 +114,9 @@ cron.schedule('5 0 * * *', async () => {
 })
 
 // Start Server
-const PORT = process.env.PORT || 3333
-const HOST = process.env.HOST || 'localhost'
+const PORT = Number(process.env.PORT) || 3333
+const HOST = process.env.HOST ?? (process.env.NODE_ENV === 'production' ? '0.0.0.0' : 'localhost')
 
-app.listen(PORT, () => {
+app.listen(PORT, HOST, () => {
   console.log(`Server is running at http://${HOST}:${PORT}`)
 })

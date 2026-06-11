@@ -1,0 +1,73 @@
+# render.yaml — IBorrow Render Blueprint
+# Deploy with one click at: https://render.com/deploy
+# Docs: https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: iborrow
+    runtime: node
+    region: singapore   # closest to Indonesia; or use: oregon, frankfurt
+    plan: free          # change to 'starter' ($7/mo) for always-on + cron reliability
+    branch: main        # change if your default branch differs
+
+    buildCommand: npm ci && npm run build
+    startCommand: node dist/migrate.js && node dist/server.js
+
+    healthCheckPath: /
+
+    envVars:
+      - key: NODE_ENV
+        value: production
+
+      - key: HOST
+        value: 0.0.0.0
+
+      - key: TZ
+        value: UTC
+
+      # Render auto-injects PORT — do NOT set it manually
+
+      - key: SESSION_SECRET
+        generateValue: true   # Render generates a secure random value automatically
+
+      - key: APP_KEY
+        generateValue: true
+
+      - key: MAIL_FROM_ADDRESS
+        value: no-reply@iborrow.ac.id
+
+      - key: MAIL_FROM_NAME
+        value: IBorrow
+
+      # -- Database connection (pulled from the PostgreSQL service below) --
+      - key: DB_HOST
+        fromDatabase:
+          name: iborrow-db
+          property: host
+
+      - key: DB_PORT
+        fromDatabase:
+          name: iborrow-db
+          property: port
+
+      - key: DB_USER
+        fromDatabase:
+          name: iborrow-db
+          property: user
+
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: iborrow-db
+          property: password
+
+      - key: DB_DATABASE
+        fromDatabase:
+          name: iborrow-db
+          property: database
+
+databases:
+  - name: iborrow-db
+    databaseName: iborrow
+    user: iborrow_user
+    region: singapore   # must match the web service region
+    plan: free          # free tier: 1 GB storage, expires after 90 days on free plan

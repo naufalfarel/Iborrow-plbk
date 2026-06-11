@@ -1,4 +1,5 @@
 node_modules
+dist
 build
 .tmp
 .env
@@ -6,3 +7,4 @@ build
 coverage
 .vite
 
+# sql/ is intentionally NOT ignored — migrate.ts reads sql/init.sql at runtime
