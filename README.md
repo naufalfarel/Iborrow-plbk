@@ -1,5 +1,5 @@
 # IBorrow — Sistem Peminjaman Alat Laboratorium
-
+ Link Deploy Iborrow https://iborrow-plbk.onrender.com/
 ## Deskripsi
 IBorrow adalah aplikasi web untuk mengelola peminjaman alat laboratorium di Jurusan Informatika. Sistem ini membantu pengguna mengajukan peminjaman, staf/admin memvalidasi permintaan, dan admin memantau inventaris, notifikasi, serta laporan aktivitas secara terstruktur.
 
