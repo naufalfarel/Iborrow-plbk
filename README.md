@@ -4,7 +4,7 @@
 IBorrow adalah aplikasi web untuk mengelola peminjaman alat laboratorium di Jurusan Informatika. Sistem ini membantu pengguna mengajukan peminjaman, staf/admin memvalidasi permintaan, dan admin memantau inventaris, notifikasi, serta laporan aktivitas secara terstruktur.
 
 ## Fitur Utama
-- Autentikasi multi-role: Mahasiswa, Dosen, Staf, Admin
+- Autentikasi multi-role: Mahasiswa, Dosen, Admin
 - Pengajuan, persetujuan, penolakan, perpanjangan, dan pengembalian peminjaman
 - Manajemen inventaris alat laboratorium
 - Monitoring status peminjaman dan stok alat
@@ -13,14 +13,11 @@ IBorrow adalah aplikasi web untuk mengelola peminjaman alat laboratorium di Juru
 - Scheduler harian untuk cek keterlambatan otomatis
 
 ## Teknologi
-- **Backend**: AdonisJS v6, Node.js, MVC Architecture
-- **Frontend**: Inertia.js + React 18 + TypeScript
+- **Backend**:  Node.js + Express.js
+- **Frontend**: React.js + Vite 
 - **Styling**: Tailwind CSS v3
 - **Database**: PostgreSQL
-- **ORM**: Lucid ORM
-- **Auth**: AdonisJS Auth dengan session
-- **Validasi**: VineJS
-- **Scheduler**: Ace Command + node-cron preload
+- **Scheduler**: node-cron 
 
 ## Struktur Aplikasi
 ```text
